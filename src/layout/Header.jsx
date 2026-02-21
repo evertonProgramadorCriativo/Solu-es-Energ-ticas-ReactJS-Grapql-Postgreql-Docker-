@@ -29,10 +29,21 @@ const Header = () => {
             <ul className="flex items-center gap-4">
               {/* Login/Logout Button */}
               <li>
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 transition-colors"
+                <button
+                  onClick={toggleLogin}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 transition-colors"
                 >
-                  <LogIn size={18} />
-                  <span>Entrar</span>
+                  {isLoggedIn ? (
+                    <>
+                      <LogOut size={18} />
+                      <span>Sair</span>
+                    </>
+                  ) : (
+                    <>
+                      <LogIn size={18} />
+                      <span>Entrar</span>
+                    </>
+                  )}
                 </button>
               </li>
 
