@@ -54,14 +54,47 @@ const Header = () => {
 
               {/* Dropdown Menu */}
               <li className="relative">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors"
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors"
                 >
                   <span>Mais</span>
                   <ChevronDown
                     size={18}
-
+                    className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''
+                      }`}
                   />
                 </button>
+
+                {/* Dropdown Content */}
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-slate-700 rounded-lg shadow-xl py-2 z-50">
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-slate-600 transition-colors"
+                    >
+                      Sobre Nós
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-slate-600 transition-colors"
+                    >
+                      FAQ
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-slate-600 transition-colors"
+                    >
+                      Suporte
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-slate-600 transition-colors"
+                    >
+                      Carreira
+                    </a>
+                  </div>
+                )}
 
               </li>
             </ul>
