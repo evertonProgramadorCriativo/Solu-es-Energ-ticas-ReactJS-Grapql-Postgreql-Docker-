@@ -3,6 +3,7 @@ import { Calculator } from 'lucide-react';
 import { estadosData } from '../../data/estadosData';
 import SeletorEstado from '../molecules/SeletorEstado';
 import InputConsumo from '../molecules/InputConsumo';
+import BotoesCalculoEnergia from '../molecules/BotoesCalculoEnergia';
 
 // FormularioCalculo é um componente funcional que representa um formulário para simulação de economia de energia. Ele utiliza o estado local para gerenciar o estado selecionado do campo de seleção de estados e um indicador de carregamento. O componente renderiza um layout estilizado com Tailwind CSS, incluindo um cabeçalho com um ícone de calculadora e um título, seguido por um campo de seleção para escolher um estado. O valor do estado selecionado é exibido em um painel de debug para fins de desenvolvimento. O componente é projetado para ser reutilizável e pode ser facilmente integrado a outros componentes ou páginas da aplicação.
 const FormularioCalculo = () => {
@@ -50,7 +51,12 @@ const FormularioCalculo = () => {
 
             </div>
 
-            {/* Painel de debug — mostra o valor atual do estado */}
+            <BotoesCalculoEnergia
+                calculando={false}
+                disabled={estadoSelecionado === '' || consumoMensal === ''}
+                temResultados={false}
+            />
+            {/* Mostra o valor atual do estado */}
             <div className="mt-4 p-3 bg-slate-100 rounded-lg text-sm text-slate-600">
                 <strong>Resultado do Input:</strong>
                 <br />
