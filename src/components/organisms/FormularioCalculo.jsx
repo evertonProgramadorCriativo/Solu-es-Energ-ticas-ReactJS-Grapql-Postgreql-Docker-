@@ -53,8 +53,11 @@ const FormularioCalculo = () => {
 
             <BotoesCalculoEnergia
                 calculando={false}
+                //Se true o botão de calcular fica desabilitado   
+                //Se false o botão de calcular fica habilitado  
                 disabled={estadoSelecionado === '' || consumoMensal === ''}
-                temResultados={false}
+                //Se true o botão de resetar aparece
+                temResultados={true}
             />
             {/* Mostra o valor atual do estado */}
             <div className="mt-4 p-3 bg-slate-100 rounded-lg text-sm text-slate-600">

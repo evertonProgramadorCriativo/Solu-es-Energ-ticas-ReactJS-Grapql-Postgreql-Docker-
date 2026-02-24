@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import NavLink from '../atoms/NavLink';
+
 import { dropdownItems } from '../../data/navData';
 
 // DropdownMenu é um componente funcional que representa o menu dropdown no cabeçalho. Ele recebe quatro props: isOpen (um booleano que indica se o dropdown está aberto ou fechado), onToggle (uma função para alternar o estado do dropdown), onClose (uma função para fechar o dropdown) e dropdownRef (uma referência ao elemento do dropdown para detectar cliques fora dele). O componente renderiza um botão que, quando clicado, alterna a visibilidade do menu dropdown. O menu é posicionado de forma absoluta e contém uma lista de links gerados a partir do array dropdownItems. Cada link é renderizado usando o componente NavLink, e ao clicar em qualquer link, a função onClose é chamada para fechar o dropdown.
