@@ -42,6 +42,27 @@ const Footer = () => {
 
 
       </div>
+       
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 py-10">
+
+        {/*  Contato */}
+        <div className="md:col-span-1">
+          <h2 className="text-xl font-bold mb-4 bg-yellow-500 lg:bg-transparent lg:text-white bg:text-black">Fale Conosco</h2>
+
+          <ul className="space-y-2 text-gray-300">
+            <li className="text-2xl">Telefone: (21) 99999-9999</li>
+            <li className="text-2xl">WhatsApp: (21) 99999-9999</li>
+            <li className="text-2xl">Email: contato@gmail.com</li>
+          </ul>
+
+          <div className="flex gap-4 mt-4">
+            <a href="#" className="hover:text-yellow-400">YouTube</a>
+            <a href="#" className="hover:text-yellow-400">Instagram</a>
+            <a href="#" className="hover:text-yellow-400">LinkedIn</a>
+          </div>
+        </div>
+    </div>
+
 
       
     </footer>
