@@ -25,6 +25,21 @@ const Footer = () => {
             <li>Nobreaks</li>
           </ul>
         </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4">Como Chegar</h2>
+          <p className="mb-3">
+            Av. Alm. Silvio de Noronha, 12345 - Centro  
+            <br /> Rio de Janeiro - RJ
+          </p>
+
+          <iframe
+            title="Mapa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d772.570163437801!2d-43.16706931794097!3d-22.913970547144434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9981db5fa68f95%3A0x4d84017940e7a943!2sBossa%20Nova%20Mall!5e0!3m2!1spt-BR!2sbr!4v1772053447196!5m2!1spt-BR!2sbr"
+            className="w-full h-40 rounded-lg"
+            loading="lazy"
+          ></iframe>
+        </div>
+
 
       </div>
 
