@@ -12,7 +12,7 @@ const BotoesCalculoEnergia = ({
     temResultados = false,
 
 }) => (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap py-4 gap-3">
         <SubmitButton
             onClick={onCalcular}
             disabled={disabled}

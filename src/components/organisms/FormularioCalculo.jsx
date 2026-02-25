@@ -75,14 +75,14 @@ const FormularioCalculo = () => {
 
     return (
         
-        <div className="bg-white  p-6 shadow-md">
+        <div className="bg-white  h-auto  pt-6 px-6 pb-20 shadow-md">
                     {/* FormularioCalculo é um componente funcional que representa um formulário para simulação de economia de energia. */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 py-4 mb-6">
                 <Calculator size={24} className="text-slate-700" />
                 <h2 className="text-xl font-semibold text-slate-800">Simulação de Economia</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-6 py-3 mb-6">
 
                 {/**
                  * @component SeletorEstado

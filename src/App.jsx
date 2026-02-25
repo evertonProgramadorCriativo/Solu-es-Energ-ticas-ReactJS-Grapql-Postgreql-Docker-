@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="min-h-screen bg-cyan-400 flex flex-col">
       <Header />
-      <main className=" w-full mx-auto flex-1">
+      <main className=" w-full  mx-auto flex-1">
         <FormularioCalculo />
     
       </main>
