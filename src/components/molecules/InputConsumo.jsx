@@ -4,24 +4,21 @@ import NumberInput from '../atoms/NumberInput';
 
 // InputConsumo é um componente funcional que representa um campo de entrada para o consumo mensal em kWh. Ele recebe três props: value (o valor atual do campo de entrada), onChange (uma função para atualizar o valor do campo de entrada) e onKeyPress (uma função para lidar com eventos de pressionamento de tecla). O componente renderiza um rótulo com um ícone de raio e um campo de entrada estilizado usando o componente NumberInput. O campo de entrada é configurado para aceitar apenas números, com um placeholder que sugere um exemplo de consumo mensal. O componente é projetado para ser reutilizável e pode ser facilmente integrado a outros componentes ou páginas da aplicação.
 const InputConsumo = ({ value, onChange, onKeyPress }) => (
-    <div>
-        <label
-            id="label-consumo"
-            className="block mb-2 font-semibold text-slate-700 text-sm"
-        >
-            <Zap size={16} className="inline mr-1" />
-            Consumo Mensal (kWh)
-        </label>
-        <NumberInput
-            id="input-consumo"
-            aria-labelledby="label-consumo"
-            value={value}
-            onChange={onChange}
-            onKeyPress={onKeyPress}
-            placeholder="Ex: 500"
-            min="1"
-        />
-    </div>
+  <div>
+    <label id="label-consumo" className="block mb-2 font-semibold text-slate-700 text-sm">
+      <Zap size={16} className="inline mr-1" />
+      Consumo Mensal (kWh)
+    </label>
+    <NumberInput
+      id="input-consumo"
+      aria-labelledby="label-consumo"
+      value={value}
+      onChange={onChange}
+      onKeyPress={onKeyPress}
+      placeholder="Ex: 500"
+      min="1"
+    />
+  </div>
 );
 
 export default InputConsumo;

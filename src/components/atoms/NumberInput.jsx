@@ -1,29 +1,29 @@
 import React from 'react';
 // NumberInput é um componente funcional que representa um campo de entrada do tipo número, estilizado com Tailwind CSS. Ele recebe várias props para configurar seu comportamento e aparência, incluindo value (o valor atual do campo), onChange (uma função para lidar com mudanças no valor), onKeyPress (uma função para lidar com eventos de pressionamento de tecla), placeholder (um texto de dica exibido quando o campo está vazio), min (o valor mínimo permitido), disabled (um booleano que indica se o campo está desabilitado) e id (um identificador único para o campo). O componente renderiza um elemento <input> do tipo number, aplicando estilos para borda, preenchimento e transições, além de estilos específicos para quando o campo está desabilitado. O atributo aria-labelledby é usado para melhorar a acessibilidade, associando o campo a um rótulo que o descreve.
 const NumberInput = ({
-    value,
-    onChange,
-    onKeyPress,
-    placeholder = '',
-    min,
-    disabled = false,
-    id,
-    'aria-labelledby': ariaLabelledby,
+  value,
+  onChange,
+  onKeyPress,
+  placeholder = '',
+  min,
+  disabled = false,
+  id,
+  'aria-labelledby': ariaLabelledby,
 }) => (
-    <input
-        id={id}
-        type="number"
-        value={value}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-        placeholder={placeholder}
-        min={min}
-        disabled={disabled}
-        aria-labelledby={ariaLabelledby}
-        className="w-full p-3 border-2 border-slate-200 rounded-lg
+  <input
+    id={id}
+    type="number"
+    value={value}
+    onChange={onChange}
+    onKeyPress={onKeyPress}
+    placeholder={placeholder}
+    min={min}
+    disabled={disabled}
+    aria-labelledby={ariaLabelledby}
+    className="w-full p-3 border-2 border-slate-200 rounded-lg
       focus:border-blue-500 focus:outline-none transition-colors
       disabled:opacity-50 disabled:cursor-not-allowed"
-    />
+  />
 );
 
 export default NumberInput;

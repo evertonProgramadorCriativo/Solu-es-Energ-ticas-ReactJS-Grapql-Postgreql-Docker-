@@ -1,20 +1,36 @@
-import React from "react";
+import React from 'react';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-              {/* Menu */}
-         <div>
+        {/* Menu */}
+        <div>
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-yellow-400">Home</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Sobre</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Serviços</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Contato</a></li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Serviços
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-yellow-400">
+                Contato
+              </a>
+            </li>
           </ul>
         </div>
-            {/* Equipamentos */}
+        {/* Equipamentos */}
         <div>
           <h2 className="text-xl font-bold mb-4">Equipamentos de Energia</h2>
           <ul className="space-y-2">
@@ -25,11 +41,11 @@ const Footer = () => {
             <li>Nobreaks</li>
           </ul>
         </div>
-            {/* Localização */}
+        {/* Localização */}
         <div>
           <h2 className="text-xl font-bold mb-4">Como Chegar</h2>
           <p className="mb-3">
-            Av. Alm. Silvio de Noronha, 12345 - Centro  
+            Av. Alm. Silvio de Noronha, 12345 - Centro
             <br /> Rio de Janeiro - RJ
           </p>
 
@@ -40,15 +56,14 @@ const Footer = () => {
             loading="lazy"
           ></iframe>
         </div>
-
-
       </div>
-       
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 py-10">
 
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 py-10">
         {/*  Contato */}
         <div className="md:col-span-1">
-          <h2 className="text-xl font-bold mb-4 bg-yellow-500 lg:bg-transparent lg:text-white bg:text-black">Fale Conosco</h2>
+          <h2 className="text-xl font-bold mb-4 bg-yellow-500 lg:bg-transparent lg:text-white bg:text-black">
+            Fale Conosco
+          </h2>
 
           <ul className="space-y-2 text-gray-300">
             <li className="text-2xl">Telefone: (21) 99999-9999</li>
@@ -57,16 +72,20 @@ const Footer = () => {
           </ul>
 
           <div className="flex gap-4 mt-4">
-            <a href="#" className="hover:text-yellow-400">YouTube</a>
-            <a href="#" className="hover:text-yellow-400">Instagram</a>
-            <a href="#" className="hover:text-yellow-400">LinkedIn</a>
+            <a href="#" className="hover:text-yellow-400">
+              YouTube
+            </a>
+            <a href="#" className="hover:text-yellow-400">
+              Instagram
+            </a>
+            <a href="#" className="hover:text-yellow-400">
+              LinkedIn
+            </a>
           </div>
         </div>
-         {/* Formulário */}
-        <div className="md:col-span-2" > 
-          <h2 className="text-xl font-bold mb-4">
-            Solicite um Orçamento
-          </h2>
+        {/* Formulário */}
+        <div className="md:col-span-2">
+          <h2 className="text-xl font-bold mb-4">Solicite um Orçamento</h2>
 
           <form className="space-y-3">
             <input
@@ -101,10 +120,7 @@ const Footer = () => {
             </button>
           </form>
         </div>
-    </div>
-
-
-      
+      </div>
     </footer>
   );
 };
