@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BackButton from '../components/atoms/BackButton';
-import { Send, User, Mail } from 'lucide-react';
+import { Send, User, Mail, Phone } from 'lucide-react';
 import { sidebarInfoContato } from '../data/sidebarInfoContato';
 import { initialForm } from '../data/contatoForm';
 import { InputField, InputClass } from '../components/atoms/InputContato';
@@ -71,6 +71,8 @@ const ContatoPage = () => {
       @gmail.com          -> INVALIDO (nada antes do @)
       joao@.com           -> INVALIDO (nada entre @ e o ponto)
     */ else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'E-mail inválido';
+    // Verifica se o campo telefone está vazio ou contém só espaços
+    if (!form.telefone.trim()) errs.telefone = 'Telefone é obrigatório';
     // Retorna o objeto de erros (vazio se tudo estiver correto)
     // Resultado esperado: {} se válido, ou { nome: 'Nome é obrigatório' } se inválido
     return errs;
@@ -97,7 +99,9 @@ const ContatoPage = () => {
     // Se chegou aqui, não há erros — limpa qualquer erro anterior exibido na tela
     // Resultado esperado: todos os campos voltam ao estilo normal sem mensagens de erro
 
-    alert(`Formulário enviado com sucesso!\n\nNome: ${form.nome}\nE-mail: ${form.email}`);
+    alert(
+      `Formulário enviado com sucesso!\n\nNome: ${form.nome}\nE-mail: ${form.email}\nTelefone: ${form.telefone}`
+    );
   };
 
   return (
@@ -158,6 +162,14 @@ const ContatoPage = () => {
                   placeholder="seu@email.com"
                   value={form.email}
                   onChange={handleChange('email')}
+                />
+              </InputField>
+              <InputField label="Telefone" icon={Phone} error={errors.telefone}>
+                <input
+                  className={InputClass('telefone')}
+                  placeholder="(11) 99999-9999"
+                  value={form.telefone}
+                  onChange={handleChange('telefone')}
                 />
               </InputField>
               <button onClick={handleSubmit}>Enviar</button>
