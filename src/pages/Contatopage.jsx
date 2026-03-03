@@ -272,7 +272,7 @@ const ContatoPage = () => {
               </InputField>
             </div>
             {/* Mensagem */}
-            <div className="mt-5">
+            <div className="mt-5 py-7">
               <InputField
                 label="Mensagem / Detalhes da proposta"
                 icon={MessageSquare}
@@ -287,7 +287,15 @@ const ContatoPage = () => {
                 />
               </InputField>
             </div>
-            <button onClick={handleSubmit}>Enviar</button>
+            <button
+              className="w-full flex items-center justify-center gap-2.5 py-4 rounded-xl
+              bg-amber-500 hover:bg-amber-600 disabled:opacity-60 disabled:cursor-not-allowed
+              text-white font-bold text-base transition-all shadow-lg shadow-amber-200
+              hover:shadow-amber-300 hover:-translate-y-0.5 active:translate-y-0 "
+              onClick={handleSubmit}
+            >
+              Enviar
+            </button>
           </div>
         </div>
       </div>
