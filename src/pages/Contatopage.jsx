@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import BackButton from '../components/atoms/BackButton';
-import { Send, User, Mail, Phone, Building2, MapPin, ChevronDown } from 'lucide-react';
+import { Send, User, Mail, Phone, Building2, MapPin, ChevronDown, Zap } from 'lucide-react';
 import { sidebarInfoContato } from '../data/sidebarInfoContato';
 import { initialForm } from '../data/contatoForm';
 import { InputField, InputClass } from '../components/atoms/InputContato';
-import { estadosBR } from '../data/estadosData';
+import { estadosBR, tiposServicoArray } from '../data/estadosData';
 
 const ContatoPage = () => {
   const [form, setForm] = useState(initialForm);
@@ -74,11 +74,31 @@ const ContatoPage = () => {
       joao@.com           -> INVALIDO (nada entre @ e o ponto)
     */ else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'E-mail inválido';
     // Verifica se o campo telefone está vazio ou contém só espaços
-    if (!form.telefone.trim()) errs.telefone = 'Telefone é obrigatório';
+    if (!form.telefone?.trim()) {
+      errs.telefone = 'Telefone é obrigatório';
+    } else {
+      const apenasNumeros = form.telefone.replace(/\D/g, '');
+
+      if (!/^[\d\s\-()+]+$/.test(form.telefone)) {
+        errs.telefone = 'Use apenas números e caracteres válidos';
+      } else if (apenasNumeros.length !== 10 && apenasNumeros.length !== 11) {
+        errs.telefone = 'Telefone deve ter 10 ou 11 números';
+      }
+    }
+
     // O campo empresa é opcional, mas se o usuário digitar algo, vamos validar que não seja só espaços
     if (!form.empresa.trim()) errs.empresa = 'empresa é obrigatório';
     //Se o campo estado estiver vazio ou não selecionado, adiciona a mensagem de erro
     if (!form.estado) errs.estado = 'Selecione um estado';
+    // Verifica se o campo tipoServico está vazio ou não selecionado, adiciona a mensagem de erro
+    if (!form.tipoServico) errs.tipoServico = 'Selecione o tipo de serviço';
+    // Verifica se o campo consumoMensal está vazio, se for menor ou igual a zero, ou se não for um número válido
+    if (!form.consumoMensal) errs.consumoMensal = 'Consumo mensal é obrigatório';
+    // isNaN() verifica se o valor não é um número (retorna true se não for um número)
+    if (form.consumoMensal && (isNaN(form.consumoMensal) || form.consumoMensal <= 0)) {
+      errs.consumoMensal = 'Consumo mensal deve ser um número positivo';
+    }
+
     // Retorna o objeto de erros (vazio se tudo estiver correto)
     // Resultado esperado: {} se válido, ou { nome: 'Nome é obrigatório' } se inválido
     return errs;
@@ -106,7 +126,7 @@ const ContatoPage = () => {
     // Resultado esperado: todos os campos voltam ao estilo normal sem mensagens de erro
 
     alert(
-      `Formulário enviado com sucesso!\n\nNome: ${form.nome}\nEmpresa: ${form.empresa}\n E-mail: ${form.email}\n Telefone: ${form.telefone}`
+      `Formulário enviado com sucesso!\n\nNome: ${form.nome}\nEmpresa: ${form.empresa}\n E-mail: ${form.email}\n Telefone: ${form.telefone} \n Estado: ${form.estado} \n Tipo de Serviço: ${form.tipoServico}`
     );
   };
 
@@ -206,6 +226,37 @@ const ContatoPage = () => {
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
                   />
                 </div>
+              </InputField>
+              <InputField label="Tipo de Serviço" icon={Zap} error={errors.tipoServico}>
+                <div className="relative">
+                  <select
+                    className={`${InputClass('tipoServico')} appearance-none pr-10`}
+                    value={form.tipoServico}
+                    onChange={handleChange('tipoServico')}
+                  >
+                    <option value="">Selecione...</option>
+                    {tiposServicoArray.map((s) => (
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                  />
+                </div>
+              </InputField>
+
+              <InputField label="Consumo Mensal (kWh)" icon={Zap} error={errors.consumoMensal}>
+                <input
+                  type="number"
+                  className={InputClass('consumoMensal')}
+                  placeholder="Ex: 500"
+                  min="1"
+                  value={form.consumoMensal}
+                  onChange={handleChange('consumoMensal')}
+                />
               </InputField>
               <button onClick={handleSubmit}>Enviar</button>
             </div>

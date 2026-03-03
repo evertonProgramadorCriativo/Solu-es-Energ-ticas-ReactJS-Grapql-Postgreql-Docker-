@@ -35,3 +35,12 @@ export const estadosBR = [
   'SE',
   'TO',
 ];
+export const tiposServicoArray = [
+  'Energia Solar Residencial',
+  'Energia Solar Comercial',
+  'Energia Solar Industrial',
+  'Consultoria Energética',
+  'Monitoramento de Sistema',
+  'Manutenção Preventiva',
+  'Outro',
+];
