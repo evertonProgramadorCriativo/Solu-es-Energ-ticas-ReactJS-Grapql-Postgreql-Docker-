@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import BackButton from '../components/atoms/BackButton';
-import { Send, User, Mail, Phone, Building2 } from 'lucide-react';
+import { Send, User, Mail, Phone, Building2, MapPin, ChevronDown } from 'lucide-react';
 import { sidebarInfoContato } from '../data/sidebarInfoContato';
 import { initialForm } from '../data/contatoForm';
 import { InputField, InputClass } from '../components/atoms/InputContato';
+import { estadosBR } from '../data/estadosData';
+
 const ContatoPage = () => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -75,6 +77,8 @@ const ContatoPage = () => {
     if (!form.telefone.trim()) errs.telefone = 'Telefone é obrigatório';
     // O campo empresa é opcional, mas se o usuário digitar algo, vamos validar que não seja só espaços
     if (!form.empresa.trim()) errs.empresa = 'empresa é obrigatório';
+    //Se o campo estado estiver vazio ou não selecionado, adiciona a mensagem de erro
+    if (!form.estado) errs.estado = 'Selecione um estado';
     // Retorna o objeto de erros (vazio se tudo estiver correto)
     // Resultado esperado: {} se válido, ou { nome: 'Nome é obrigatório' } se inválido
     return errs;
@@ -181,6 +185,27 @@ const ContatoPage = () => {
                   value={form.empresa}
                   onChange={handleChange('empresa')}
                 />
+              </InputField>
+
+              <InputField label="Estado" icon={MapPin} error={errors.estado}>
+                <div className="relative">
+                  <select
+                    className={`${InputClass('estado')} appearance-none pr-10`}
+                    value={form.estado}
+                    onChange={handleChange('estado')}
+                  >
+                    <option value="">Selecione...</option>
+                    {estadosBR.map((uf) => (
+                      <option key={uf} value={uf}>
+                        {uf}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                  />
+                </div>
               </InputField>
               <button onClick={handleSubmit}>Enviar</button>
             </div>

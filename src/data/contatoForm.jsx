@@ -3,4 +3,5 @@ export const initialForm = {
   email: '',
   telefone: '',
   empresa: '',
+  estado: '',
 };
