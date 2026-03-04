@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BackButton from '../components/atoms/BackButton';
 import { Zap } from 'lucide-react';
 import { serviceDetails, faqs, statServiceArray } from '../data/ServicosPageData';
-import { Star, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 const ServicosPage = () => {
   const navigate = useNavigate();
@@ -126,10 +126,57 @@ const ServicosPage = () => {
                 className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
               >
                 <button
-                  onClick={() => setOpenFaq(openFaq)}
+                  //Se o item clicado já está aberto -> fecha
+                  //Se não está aberto -> abre
+                  /*
+
+                    EXPLICAÇÃO DA LÓGICA DO setOpenFaq
+
+
+                    Caso 1 — Item está fechado
+                    openFaq = null
+                    i = 2
+
+                    Comparação:
+                    null === 2 -> false
+
+                    Resultado:
+                    setOpenFaq(2)
+
+                    Abre o item 2
+
+
+                    Caso 2 — Item já está aberto
+                    openFaq = 2
+                    i = 2
+
+                    Comparação:
+                    2 === 2 -> true
+
+                    Resultado:
+                    setOpenFaq(null)
+
+                    Fecha o item
+
+
+                    Diferença entre as duas formas:
+
+                    setOpenFaq(openFaq)
+                    -> Reatribui o mesmo valor ao estado (não muda nada)
+
+                    setOpenFaq(openFaq === i ? null : i)
+                    -> Alterna dinamicamente:
+                    - Se já está aberto -> fecha
+                    - Se está fechado -> abre
+                    */
+
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
                   <span className="font-bold text-slate-800 text-sm pr-4">{faq.q}</span>
+                  <span className="text-xs text-red-500">
+                    {openFaq === i ? 'ABERTO' : 'FECHADO'}
+                  </span>
                 </button>
               </div>
             ))}
