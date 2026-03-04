@@ -68,7 +68,9 @@ const Header = () => {
               <li>
                 <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors">
                   <Briefcase size={18} />
-                  <span>Serviços</span>
+                  <span>
+                    <Link to="/servicos">Serviços</Link>
+                  </span>
                 </button>
               </li>
 
