@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import ContatoPage from './pages/Contatopage';
 import Footer from './components/organisms/Footer';
 import ServicosPage from './pages/ServicosPage';
+import FAQPage from './pages/FaqPage';
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/contato" element={<ContatoPage />} />
             <Route path="/servicos" element={<ServicosPage />} />
+            <Route path="/faq" element={<FAQPage />} />
           </Routes>
         </main>
         <Footer />
