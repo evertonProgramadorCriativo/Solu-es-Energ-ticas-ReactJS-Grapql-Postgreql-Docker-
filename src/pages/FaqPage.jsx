@@ -1,11 +1,44 @@
 import React, { useState } from 'react';
-import { HelpCircle, Search } from 'lucide-react';
+import { HelpCircle, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import BackButton from '../components/atoms/BackButton';
 import { categorias } from '../data/FaqPageData';
+import { faqs } from '../data/FaqPageData';
 const FaqPage = () => {
   const [busca, setBusca] = useState('');
   const [openIndex, setOpenIndex] = useState(null);
   const [categoriaAtiva, setCategoriaAtiva] = useState('Todas');
+
+  /*
+Veja como o fluxo funciona na prática:
+ Usuário clica em "Financeiro"
+O evento dispara setCategoriaAtiva('Financeiro'), atualizando o estado do componente.
+ React re-renderiza automaticamente
+Sempre que um estado muda, o React recalcula o componente — sem precisar recarregar a página.
+ O filter() entra em ação
+faqs.filter() roda novamente comparando 'Financeiro' === f.categoria para cada item da lista.
+ Apenas os FAQs da categoria passam
+Dos 13 itens totais, somente os 3 da categoria "Financeiro" retornam.
+ A lista atualiza na tela
+O usuário vê instantaneamente apenas o conteúdo relevante.
+
+O que aprendi com isso: a combinação de useState + .filter() é uma das formas mais simples e poderosas de criar interfaces reativas. Sem bibliotecas extras, sem complexidade desnecessária.
+#React #JavaScript #Frontend #WebDevelopment
+
+  */
+  const faqsFiltrados = faqs.filter((f) => {
+    // se for 'Todas' -> passa tudo
+    // senão -> compara ex: 'Financeiro' === 'Financeiro'
+    // O operador lógico || é usado para permitir que a categoria "Todas" exiba todos os FAQs, independentemente de sua categoria específica. Se categoriaAtiva for "Todas", matchCategoria será true para todos os itens, permitindo que todos os FAQs sejam exibidos. Caso contrário, matchCategoria só será true para os FAQs cuja categoria corresponda exatamente à categoriaAtiva selecionada.
+    const matchCategoria = categoriaAtiva === 'Todas' || f.categoria === categoriaAtiva;
+    console.log('achando categoria por clique: ' + matchCategoria);
+    const matchBusca =
+      busca === '' ||
+      // O método toLowerCase() é usado para converter tanto a pergunta (f.q) quanto a resposta (f.a) para letras minúsculas, garantindo que a busca seja case-insensitive. O método includes() verifica se a string de busca (também convertida para minúsculas) está presente em qualquer parte da pergunta ou resposta. Se a string de busca for encontrada em pelo menos um desses campos, matchBusca será true, permitindo que o FAQ seja incluído nos resultados filtrados.
+      f.q.toLowerCase().includes(busca.toLowerCase()) ||
+      f.a.toLowerCase().includes(busca.toLowerCase());
+
+    return matchCategoria && matchBusca;
+  });
 
   return (
     <div className="bg-slate-50 min-h-[100vh]">
@@ -62,6 +95,54 @@ const FaqPage = () => {
               {label}
             </button>
           ))}
+
+          {/*  LISTA DE FAQs  */}
+          {/* traz todas categorias ou a Selecionada */}
+          {faqsFiltrados.length === 0 ? (
+            <div className="text-center py-20">
+              <Search size={40} className="text-slate-300 mx-auto mb-4" />
+              <p className="text-slate-500 font-semibold">Nenhuma pergunta encontrada.</p>
+              <p className="text-slate-400 text-sm mt-1">
+                Tente outros termos ou entre em contato conosco.
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3 mb-14">
+              {faqsFiltrados.map((faq, i) => {
+                const isOpen = openIndex === i;
+                return (
+                  <div
+                    key={i}
+                    className={`bg-white rounded-2xl border-2 overflow-hidden shadow-sm transition-all ${
+                      isOpen ? 'border-amber-400 shadow-amber-100' : 'border-slate-100'
+                    }`}
+                  >
+                    <button
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between p-5 text-left gap-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="bg-amber-50 text-amber-600 text-xs font-bold px-2 py-0.5 rounded-full shrink-0 mt-0.5">
+                          {faq.categoria}
+                        </span>
+                        <span className="font-bold text-slate-800 text-sm">{faq.q}</span>
+                      </div>
+                      {isOpen ? (
+                        <ChevronUp size={18} className="text-amber-500 shrink-0" />
+                      ) : (
+                        <ChevronDown size={18} className="text-slate-400 shrink-0" />
+                      )}
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </div>
