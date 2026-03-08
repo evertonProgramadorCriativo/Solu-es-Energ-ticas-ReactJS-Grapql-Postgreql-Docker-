@@ -6,6 +6,7 @@ import { valores, techStack } from '../data/SobrePageData';
 
 const SobrePage = () => {
   const navigate = useNavigate();
+
   return (
     <div className="bg-slate-50">
       {/* Header  */}
@@ -179,6 +180,15 @@ const SobrePage = () => {
               </div>
             </div>
           </div>
+        </section>
+        {/* Seção Linha do Tempo */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-extrabold text-slate-800 mb-2 text-center">
+            Nossa Trajetória
+          </h2>
+          <p className="text-slate-500 text-sm text-center mb-10">
+            12 anos construindo o futuro da energia no Brasil
+          </p>
         </section>
       </main>
     </div>
