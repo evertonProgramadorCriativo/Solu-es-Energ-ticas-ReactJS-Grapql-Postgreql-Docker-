@@ -101,7 +101,10 @@ const SobrePage = () => {
           </div>
         </section>
         {/* Banner Produtos e Serviços da empresa */}
-        <section className="mb-16 min-h-[400px] bg-slate-800 p-10 text-white relative overflow-hidden"></section>
+        <section className="mb-16 min-h-[400px] bg-slate-800 p-10 text-white relative overflow-hidden">
+          {/* Bolas decorativas amarelas no banner */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+        </section>
       </main>
     </div>
   );
