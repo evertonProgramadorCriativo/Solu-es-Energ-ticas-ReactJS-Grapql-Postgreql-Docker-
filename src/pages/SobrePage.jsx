@@ -2,7 +2,8 @@ import React from 'react';
 import { Zap, ArrowRight, Target, Globe, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/atoms/BackButton';
-import { valores } from '../data/SobrePageData';
+import { valores, techStack } from '../data/SobrePageData';
+
 const SobrePage = () => {
   const navigate = useNavigate();
   return (
@@ -99,6 +100,8 @@ const SobrePage = () => {
             ))}
           </div>
         </section>
+        {/* Banner Produtos e Serviços da empresa */}
+        <section className="mb-16 min-h-[400px] bg-slate-800 p-10 text-white relative overflow-hidden"></section>
       </main>
     </div>
   );
