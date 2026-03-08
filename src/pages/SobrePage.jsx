@@ -104,6 +104,54 @@ const SobrePage = () => {
         <section className="mb-16 min-h-[400px] bg-slate-800 p-10 text-white relative overflow-hidden">
           {/* Bolas decorativas amarelas no banner */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+          {/* Coluna divisão em 2 partes */}
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            {/* Tecnologia que a Empresa Oferece */}
+            <div className="flex flex-col h-full">
+              <h2 className="text-2xl font-extrabold mb-3">Tecnologia que usamos</h2>
+              <p className="text-slate-400 text-sm mb-6 max-w-lg">
+                Trabalhamos apenas com equipamentos certificados e fabricantes de classe mundial.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 flex-1">
+                {/*Desestruturação const icon = Icon para Componente <Icon> */}
+                {techStack.map(({ icon: Icon, label, desc, img }) => (
+                  <div
+                    key={label}
+                    className="relative bg-slate-700 rounded-2xl overflow-hidden flex flex-col min-h-40 group"
+                  >
+                    {/* Imagem de fundo */}
+                    {img && (
+                      <>
+                        <img
+                          src={img}
+                          alt={label}
+                          className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-45 transition-opacity duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent" />
+                      </>
+                    )}
+
+                    {/* Conteúdo do card Dinâmico */}
+                    <div className="relative z-10 flex flex-col justify-between h-full p-5 flex-1">
+                      <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center mb-auto">
+                        <Icon size={22} className="text-amber-400" />
+                      </div>
+                      <div className="mt-8">
+                        <span className="text-sm font-extrabold text-white block leading-tight">
+                          {label}
+                        </span>
+                        {/* Se tive Desconto */}
+                        {desc && (
+                          <p className="text-slate-400 text-[11px] mt-1 leading-snug">{desc}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
