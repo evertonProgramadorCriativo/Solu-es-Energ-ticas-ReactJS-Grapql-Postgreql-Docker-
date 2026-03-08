@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, ArrowRight, Target } from 'lucide-react';
+import { Zap, ArrowRight, Target, Globe, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/atoms/BackButton';
 const SobrePage = () => {
@@ -45,13 +45,33 @@ const SobrePage = () => {
 
         {/*  Cards Informativos Sobre a Empresa  */}
         <section className="mb-16">
+          {/* Coluna de Cards */}
           <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1: Missão */}
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
               <Target size={28} className="text-amber-500 mb-4" />
               <h3 className="text-lg font-extrabold text-slate-800 mb-2">Missão</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
                 Democratizar o acesso à energia solar limpa e acessível para residências, comércios
                 e indústrias em todo o Brasil.
+              </p>
+            </div>
+            {/* Card 2: Visão */}
+            <div className="bg-amber-500 rounded-3xl p-8 shadow-xl shadow-amber-200 text-white">
+              <Globe size={28} className="text-white mb-4" />
+              <h3 className="text-lg font-extrabold mb-2">Visão</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Ser a maior e mais confiável empresa de energia solar do Brasil até 2030, liderando
+                a transição para uma economia de carbono zero.
+              </p>
+            </div>
+            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+              {/* Card 3: Propósito */}
+              <Award size={28} className="text-amber-500 mb-4" />
+              <h3 className="text-lg font-extrabold text-slate-800 mb-2">Propósito</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Cada painel instalado é um voto pelo futuro. Acreditamos que energia limpa não é
+                luxo — é direito de todos.
               </p>
             </div>
           </div>
