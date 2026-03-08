@@ -101,7 +101,7 @@ const SobrePage = () => {
           </div>
         </section>
         {/* Banner Produtos e Serviços da empresa */}
-        <section className="mb-16 min-h-[400px] bg-slate-800 p-10 text-white relative overflow-hidden">
+        <section className="mb-16 bg-slate-800 p-10 text-white relative overflow-hidden">
           {/* Bolas decorativas amarelas no banner */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
           {/* Coluna divisão em 2 partes */}
@@ -149,6 +149,33 @@ const SobrePage = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+            {/* Card de imagem */}
+            <div className="relative rounded-2xl overflow-hidden h-72 md:h-full min-h-64 shadow-xl group">
+              <img
+                src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&q=80"
+                alt="Painéis solares industriais"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Overlay gradiente */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
+
+              {/* Badge flutuante — certificação */}
+              <div className="absolute top-4 left-4 bg-amber-500 text-slate-900 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                Certificado INMETRO
+              </div>
+
+              {/* Stat flutuante — canto inferior */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-xl px-4 py-3">
+                  <p className="text-amber-400 font-extrabold text-xl leading-none">+500</p>
+                  <p className="text-slate-400 text-[11px] mt-0.5">indústrias atendidas</p>
+                </div>
+                <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-xl px-4 py-3">
+                  <p className="text-amber-400 font-extrabold text-xl leading-none">25 anos</p>
+                  <p className="text-slate-400 text-[11px] mt-0.5">de garantia nos painéis</p>
+                </div>
               </div>
             </div>
           </div>
