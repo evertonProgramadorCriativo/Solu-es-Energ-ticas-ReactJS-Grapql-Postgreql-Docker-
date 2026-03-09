@@ -1,6 +1,7 @@
 import React from 'react';
 import { Headphones, Clock } from 'lucide-react';
-import { slas } from '../data/SuportePageData';
+import { slas, canais } from '../data/SuportePageData';
+import BackButton from '../components/atoms/BackButton';
 const SuportePage = () => {
   return (
     <div className="bg-slate-50 min-h-screen relative">
@@ -43,6 +44,55 @@ const SuportePage = () => {
           </div>
         </div>
       </header>
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <BackButton />
+
+        {/*  CANAIS DE ATENDIMENTO */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-extrabold text-slate-800 mb-2 text-center">Fale Conosco</h2>
+          <p className="text-slate-500 text-sm text-center mb-8">
+            Escolha o canal mais conveniente para você
+          </p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {canais.map(({ icon: Icon, titulo, desc, info, badge, cor, destaque }) => (
+              //icon : Icon é uma destruturação que renomeia a propriedade "icon" para "Icon" para ser usada como um componente React. Assim, podemos renderizar o ícone dinamicamente usando <Icon /> no JSX.
+              //icon:Icon é igual const Icon = icon.item para ser usado em componentes React. Assim, podemos renderizar o ícone dinamicamente usando <Icon /> no JSX.
+              <div
+                key={titulo}
+                className={`rounded-3xl p-7 border-2 transition-all hover:-translate-y-1 hover:shadow-lg ${
+                  destaque
+                    ? 'bg-amber-500 border-amber-400 text-white shadow-xl shadow-amber-200'
+                    : 'bg-white border-slate-100 shadow-sm'
+                }`}
+              >
+                <div
+                  className={`rounded-xl p-3 inline-flex mb-4 ${destaque ? 'bg-white/20' : cor}`}
+                >
+                  <Icon size={22} className={destaque ? 'text-white' : ''} />
+                </div>
+                <h3
+                  className={`text-lg font-extrabold mb-1 ${destaque ? 'text-white' : 'text-slate-800'}`}
+                >
+                  {titulo}
+                </h3>
+                <p className={`text-sm mb-3 ${destaque ? 'text-white/70' : 'text-slate-500'}`}>
+                  {desc}
+                </p>
+                <p
+                  className={`font-bold text-sm mb-4 ${destaque ? 'text-white' : 'text-slate-800'}`}
+                >
+                  {info}
+                </p>
+                <span
+                  className={`text-xs font-bold px-3 py-1 rounded-full ${destaque ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}
+                >
+                  {badge}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
