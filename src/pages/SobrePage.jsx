@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Zap, ArrowRight, Target, Globe, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/atoms/BackButton';
-import { valores, techStack } from '../data/SobrePageData';
+import { valores, techStack, timeline } from '../data/SobrePageData';
 
 const SobrePage = () => {
   const navigate = useNavigate();
-
+  const [activeYear, setActiveYear] = useState(null);
   return (
     <div className="bg-slate-50">
       {/* Header  */}
@@ -189,6 +189,70 @@ const SobrePage = () => {
           <p className="text-slate-500 text-sm text-center mb-10">
             12 anos construindo o futuro da energia no Brasil
           </p>
+
+          <div className="relative">
+            {/* Linha central */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2" />
+
+            <div className="flex flex-col gap-6">
+              {/* Lendo um array de objetos */}
+              {timeline.map((item, i) => (
+                <div
+                  key={item.year}
+                  className={`flex gap-6 md:gap-0 items-start ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                >
+                  {/* Vendo o resto se par e colocando uma condicional {i % 2 === 0 */}
+                  <div
+                    className={`hidden md:block md:w-1/2 ${i % 2 === 0 ? 'pr-12 text-right' : 'pl-12'}`}
+                  >
+                    {' '}
+                    {/* Defininado o ano  com condicional  */}
+                    <button
+                      onClick={() => setActiveYear(activeYear === i ? null : i)}
+                      className={`inline-block bg-white rounded-2xl p-5 border shadow-sm hover:shadow-md transition-all cursor-pointer text-left w-full max-w-sm ${activeYear === i ? 'border-amber-400 shadow-amber-100' : 'border-slate-100'}`}
+                    >
+                      <span className="text-amber-500 font-extrabold text-sm">{item.year}</span>
+                      <h4 className="font-extrabold text-slate-800 mt-1 mb-2">{item.title}</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                    </button>
+                  </div>
+
+                  {/* Pontos laranja central */}
+                  <div className="hidden md:flex w-0 items-center justify-center relative">
+                    <div className="w-4 h-4 bg-amber-500 rounded-full border-4 border-white shadow-md absolute" />
+                  </div>
+                  <div className="hidden md:block md:w-1/2" />
+
+                  {/* Mobile  */}
+                  <div className="md:hidden flex gap-4 items-start w-full">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+                        {/* Pegando os 2 ultimos numeros do ano year: '2018', com o metodo slice vai cria um novo array com o valor de 18*/}
+                        {item.year.slice(2)}
+                      </div>
+                      {/* separador visual entre os itens da linha do tempo, mas apenas até o penúltimo item.
+                         i < timeline.length - 1: Verifica se o índice atual (i) é menor que o último índice do array
+
+                        timeline.length - 1: Se temos 5 itens,
+                        isso é 5 - 1 = 4 (último índice)
+
+                        Renderiza o separador:
+                        Apenas para índices 0, 1, 2, 3 (todos exceto o último)
+                      */}
+                      {i < timeline.length - 1 && (
+                        <div className="w-0.5 bg-slate-200 flex-1 mt-2 h-8" />
+                      )}
+                    </div>
+                    <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex-1">
+                      <span className="text-amber-500 font-extrabold text-sm">{item.year}</span>
+                      <h4 className="font-extrabold text-slate-800 mt-1 mb-1">{item.title}</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
       </main>
     </div>
