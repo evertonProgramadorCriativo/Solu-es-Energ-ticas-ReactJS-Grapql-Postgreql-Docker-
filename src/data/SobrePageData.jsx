@@ -68,3 +68,14 @@ export const timeline = [
     desc: 'Superamos 1.200 projetos concluídos e 15 MW de capacidade instalada, evitando mais de 8.000 toneladas de CO₂.',
   },
 ];
+
+export const equipe = [
+  { nome: 'Carlos Mendonça', cargo: 'CEO & Co-fundador', img: 'https://i.pravatar.cc/150?img=11' },
+  {
+    nome: 'Ana Ferreira',
+    cargo: 'Diretora de Engenharia',
+    img: 'https://i.pravatar.cc/150?img=47',
+  },
+  { nome: 'Rafael Costa', cargo: 'Gerente Comercial', img: 'https://i.pravatar.cc/150?img=15' },
+  { nome: 'Juliana Neves', cargo: 'Head de Suporte', img: 'https://i.pravatar.cc/150?img=45' },
+];

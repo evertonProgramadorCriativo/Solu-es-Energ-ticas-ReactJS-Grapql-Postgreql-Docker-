@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Zap, ArrowRight, Target, Globe, Award } from 'lucide-react';
+import { Zap, ArrowRight, Target, Globe, Award, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/atoms/BackButton';
-import { valores, techStack, timeline } from '../data/SobrePageData';
+import { valores, techStack, timeline, equipe } from '../data/SobrePageData';
 
 const SobrePage = () => {
   const navigate = useNavigate();
@@ -254,7 +254,53 @@ const SobrePage = () => {
             </div>
           </div>
         </section>
+        {/* Funcionario da empresa */}
+        <section className="mb-16">
+          <div className="text-center mb-8">
+            <Users size={28} className="text-amber-500 mx-auto mb-3" />
+            <h2 className="text-2xl font-extrabold text-slate-800 mb-2">Quem faz acontecer</h2>
+            <p className="text-slate-500 text-sm">Um time apaixonado por energia e pessoas</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {equipe.map(({ nome, cargo, img }) => (
+              <div
+                key={nome}
+                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center hover:-translate-y-1 transition-all"
+              >
+                <img
+                  src={img}
+                  alt={nome}
+                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-4 border-amber-100"
+                />
+                <h4 className="font-extrabold text-slate-800 text-sm">{nome}</h4>
+                <p className="text-slate-500 text-xs mt-1">{cargo}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
+      {/* Seção entra em Contato */}
+      <section className="bg-amber-500  p-10 text-center text-white shadow-xl shadow-amber-200">
+        <Zap size={32} className="mx-auto mb-4" />
+        <h2 className="text-2xl font-extrabold mb-3">Faça parte dessa história</h2>
+        <p className="text-white/80 mb-6 text-sm max-w-md mx-auto">
+          Junte-se a mais de 1.200 famílias e empresas que já escolheram a energia do futuro.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => navigate('/contato')}
+            className="bg-white text-amber-500 font-bold px-8 py-3 rounded-xl hover:bg-amber-50 transition-all inline-flex items-center justify-center gap-2"
+          >
+            Solicitar Proposta <ArrowRight size={15} />
+          </button>
+          <button
+            onClick={() => navigate('/servicos')}
+            className="bg-amber-600 text-white font-bold px-8 py-3 rounded-xl hover:bg-amber-700 transition-all"
+          >
+            Ver Serviços
+          </button>
+        </div>
+      </section>
     </div>
   );
 };
