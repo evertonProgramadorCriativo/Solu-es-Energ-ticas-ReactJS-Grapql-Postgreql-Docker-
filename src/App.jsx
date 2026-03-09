@@ -7,6 +7,7 @@ import Footer from './components/organisms/Footer';
 import ServicosPage from './pages/ServicosPage';
 import FaqPage from './pages/FaqPage';
 import SobrePage from './pages/SobrePage';
+import SuportePage from './pages/SuportePage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/servicos" element={<ServicosPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/sobre" element={<SobrePage />} />
+            <Route path="/suporte" element={<SuportePage />} />
           </Routes>
         </main>
         <Footer />
