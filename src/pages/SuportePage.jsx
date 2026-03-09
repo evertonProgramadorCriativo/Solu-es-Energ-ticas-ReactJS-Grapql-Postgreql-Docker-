@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Headphones, Clock } from 'lucide-react';
-import { slas, canais } from '../data/SuportePageData';
+import { slas, canais, problemas } from '../data/SuportePageData';
 import BackButton from '../components/atoms/BackButton';
 const SuportePage = () => {
+  const [problemaSelecionado, setProblema] = useState(null);
   return (
     <div className="bg-slate-50 min-h-screen relative">
       {/*  Header */}
@@ -47,7 +48,7 @@ const SuportePage = () => {
       <div className="max-w-6xl mx-auto px-4 py-10">
         <BackButton />
 
-        {/*  CANAIS DE ATENDIMENTO */}
+        {/* SEÇÃO  CANAIS DE ATENDIMENTO */}
         <section className="mb-14">
           <h2 className="text-2xl font-extrabold text-slate-800 mb-2 text-center">Fale Conosco</h2>
           <p className="text-slate-500 text-sm text-center mb-8">
@@ -89,6 +90,36 @@ const SuportePage = () => {
                   {badge}
                 </span>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SEÇÃO PROBLEMAS COMUNS */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-extrabold text-slate-800 mb-2 text-center">
+            Qual é o seu problema?
+          </h2>
+          <p className="text-slate-500 text-sm text-center mb-8">
+            Selecione para agilizarmos o atendimento
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {problemas.map(({ icon: Icon, titulo, desc }) => (
+              <button
+                key={titulo}
+                onClick={() => setProblema(problemaSelecionado === titulo ? null : titulo)}
+                className={`text-left p-5 rounded-2xl border-2 transition-all hover:-translate-y-0.5 ${
+                  problemaSelecionado === titulo
+                    ? 'border-amber-400 bg-amber-50 shadow-md shadow-amber-100'
+                    : 'border-slate-100 bg-white shadow-sm hover:border-slate-200'
+                }`}
+              >
+                <Icon
+                  size={22}
+                  className={`mb-3 ${problemaSelecionado === titulo ? 'text-amber-500' : 'text-slate-500'}`}
+                />
+                <h4 className="font-extrabold text-slate-800 text-sm mb-1">{titulo}</h4>
+                <p className="text-slate-500 text-xs">{desc}</p>
+              </button>
             ))}
           </div>
         </section>

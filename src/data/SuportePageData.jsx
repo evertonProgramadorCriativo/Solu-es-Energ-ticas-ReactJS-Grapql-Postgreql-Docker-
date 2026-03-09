@@ -1,4 +1,14 @@
-import { MessageCircle, Phone, Mail } from 'lucide-react';
+import {
+  MessageCircle,
+  Phone,
+  Mail,
+  Zap,
+  AlertTriangle,
+  Wifi,
+  Battery,
+  BarChart3,
+  Sun,
+} from 'lucide-react';
 
 export const slas = [
   { tipo: 'Emergencial', prazo: '4 horas', cor: 'text-red-500', bg: 'bg-red-50' },
@@ -35,4 +45,13 @@ export const canais = [
     cor: 'bg-amber-50 text-amber-600',
     destaque: false,
   },
+];
+
+export const problemas = [
+  { icon: Wifi, titulo: 'Sistema offline', desc: 'Inversor sem comunicação ou app sem dados' },
+  { icon: Battery, titulo: 'Geração baixa', desc: 'Produção abaixo do esperado para o clima' },
+  { icon: AlertTriangle, titulo: 'Alerta no app', desc: 'Notificação de erro ou falha no painel' },
+  { icon: BarChart3, titulo: 'Conta alta', desc: 'Fatura não reduziu como esperado' },
+  { icon: Sun, titulo: 'Painel danificado', desc: 'Vidro quebrado ou mancha visível' },
+  { icon: Zap, titulo: 'Outros problemas', desc: 'Situações não listadas acima' },
 ];
