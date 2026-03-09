@@ -1,5 +1,6 @@
 import React from 'react';
 import { Headphones, Clock } from 'lucide-react';
+import { slas } from '../data/SuportePageData';
 const SuportePage = () => {
   return (
     <div className="bg-slate-50 min-h-screen relative">
@@ -29,6 +30,15 @@ const SuportePage = () => {
                 <Clock size={16} className="text-amber-400" />
                 <span className="text-slate-300">Atendimento 24/7 para emergências</span>
               </div>
+            </div>
+            {/* cards em grid 2x2 no banner da página de suporte para apresentar informações relevantes sobre a empresa */}
+            <div className="grid grid-cols-2 gap-3 shrink-0">
+              {slas.map(({ tipo, prazo, cor, bg }) => (
+                <div key={tipo} className={`${bg} rounded-2xl p-6 text-center`}>
+                  <div className={`text-2xl font-extrabold ${cor}`}>{prazo}</div>
+                  <div className="text-slate-600 text-2xl font-bold mt-1">{tipo}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
